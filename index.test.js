@@ -9,7 +9,7 @@ describe('Restaurant and Menu Models', () => {
     /**
      * Runs the code prior to all tests
      */
-    beforeAll(async () => {
+    beforeEach(async () => {
         // the 'sync' method will create tables based on the model class
         // by setting 'force:true' the tables are recreated each time the 
         // test suite is run
@@ -41,9 +41,26 @@ describe('Restaurant and Menu Models', () => {
         const testFind = await Menu.findAll();
         expect(testFind[0]).toEqual(expect.objectContaining(seedMenu[0]));
     });
-
+    
     test('can delete Restaurants', async () => {
         // TODO - write test
-        expect('NO TEST').toEqual('EXPECTED DATA')
+        const restaurants = await Restaurant.bulkCreate(seedRestaurant);
+        const deletedRestaurant = await Restaurant.destroy({
+            where: {
+                name: "AppleBees"
+            }
+        })
+        expect(await Restaurant.findAll()).toHaveLength(2);
+    });
+
+    test('can delete Menus', async () => {
+        // TODO - write test
+        const menus = await Menu.bulkCreate(seedMenu);
+        const deletedMenu = await Menu.destroy({
+            where: {
+                title: "Breakfast"
+            }
+        })
+        expect(await Menu.findAll()).toHaveLength(2);
     });
 })
