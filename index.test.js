@@ -30,7 +30,9 @@ describe('Restaurant and Menu Models', () => {
 
     test('can find Restaurants', async () => {
         // TODO - write test
-        expect('NO TEST').toEqual('EXPECTED DATA')
+        const restaurants = await Restaurant.bulkCreate(seedRestaurant);
+        const testFind = await Restaurant.findAll();
+        expect(testFind[0]).toEqual(expect.objectContaining(seedRestaurant[0]));
     });
 
     test('can find Menus', async () => {
