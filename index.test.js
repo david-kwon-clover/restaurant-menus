@@ -34,10 +34,12 @@ describe('Restaurant and Menu Models', () => {
         const testFind = await Restaurant.findAll();
         expect(testFind[0]).toEqual(expect.objectContaining(seedRestaurant[0]));
     });
-
+    
     test('can find Menus', async () => {
         // TODO - write test
-        expect('NO TEST').toEqual('EXPECTED DATA')
+        const menus = await Menu.bulkCreate(seedMenu);
+        const testFind = await Menu.findAll();
+        expect(testFind[0]).toEqual(expect.objectContaining(seedMenu[0]));
     });
 
     test('can delete Restaurants', async () => {
