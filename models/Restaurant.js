@@ -10,7 +10,10 @@ Restaurant.init(
     location: DataTypes.STRING,
     cuisine: DataTypes.STRING,
   },
-  {}
+  {
+   sequelize: sequelize,
+   modelName: "Restaurant" 
+  }
 );
 
 module.exports = { Restaurant };
