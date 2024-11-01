@@ -21,11 +21,11 @@ describe('Restaurant and Menu Models', () => {
         const testRestaurant = await Restaurant.create(seedRestaurant[0]);
         expect(testRestaurant).toEqual(expect.objectContaining(seedRestaurant[0]));
     });
-
+    
     test('can create a Menu', async () => {
         // TODO - write test
-
-        expect('NO TEST').toEqual('EXPECTED DATA')
+        const testMenu = await Menu.create(seedMenu[0]);
+        expect(testMenu).toEqual(expect.objectContaining(seedMenu[0]));
     });
 
     test('can find Restaurants', async () => {
